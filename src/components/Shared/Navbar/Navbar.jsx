@@ -1,13 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../../../images/logo.png';
+import './Navbar.css';
 
 const Navbar = () => {
     const lists = [
-        <li style={{fontSize: '17px'}}><NavLink to='/'>Home</NavLink></li>,
-        <li style={{fontSize: '17px'}}><NavLink to='/about'>About</NavLink></li>,
-        <li style={{fontSize: '17px'}}><NavLink to='/register'>Register</NavLink></li>,
-        <li style={{fontSize: '17px'}}><NavLink to='/login'>Login</NavLink></li>,
+        <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/'>Home</NavLink></li>,
+        <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/about'>About</NavLink></li>,
+        <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/register'>Register</NavLink></li>,
+        <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/login'>Login</NavLink></li>,
     ]
     return (
         <div style={{background: "whitesmoke"}}>
@@ -29,7 +30,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Appointment</a>
+                    <a className="btn bg-simple text-complex">Appointment</a>
                 </div>
             </div>
         </div>
