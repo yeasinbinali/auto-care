@@ -1,17 +1,32 @@
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import { useForm } from "react-hook-form"
 import { Link } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { Tooltip } from 'react-tooltip';
+import { AuthContext } from '../../provider/AuthProvider';
 
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
+    const { loginUser } = useContext(AuthContext);
+
     const onSubmit = (data) => {
-        console.log(data)
+        const email = data.email;
+        const password = data.password;
+
+        loginUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            })
     }
+
     return (
         <div className="w-[90%] mx-auto flex flex-row items-center my-20">
             <div className="w-1/2">
@@ -22,11 +37,11 @@ const Login = () => {
                     <h1 className='text-center text-4xl font-bold mb-5'>Login Now!</h1>
                     <div className='mt-3'>
                         <label>Email</label><br />
-                        <input className='border-[1px] mt-1 p-1 w-full rounded-lg' type='email' placeholder='Your Email' {...register("name")} required />
+                        <input className='border-[1px] mt-1 p-1 w-full rounded-lg' type='email' placeholder='Your Email' {...register("email")} required />
                     </div>
                     <div className='mt-3'>
                         <label>Password</label><br />
-                        <input className='border-[1px] mt-1 p-1 w-full rounded-lg' type='password' placeholder='Your Password' {...register("name")} required />
+                        <input className='border-[1px] mt-1 p-1 w-full rounded-lg' type='password' placeholder='Your Password' {...register("password")} required />
                     </div>
                     <input type="submit" className='btn btn-sm bg-simple w-full text-complex my-5' />
                 </form>

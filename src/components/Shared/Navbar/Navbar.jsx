@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../../../images/logo.png';
 import './Navbar.css';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Navbar = () => {
+    const {user} = useContext(AuthContext);
+
     const lists = [
         <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/'>Home</NavLink></li>,
         <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/about'>About</NavLink></li>,
+        <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/userProfile'>User</NavLink></li>,
         <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/register'>Register</NavLink></li>,
         <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/login'>Login</NavLink></li>,
     ]
@@ -30,6 +34,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    {
+                        user && <p>{user?.email}</p>
+                    }
                     <a className="btn bg-simple text-complex">Appointment</a>
                 </div>
             </div>
