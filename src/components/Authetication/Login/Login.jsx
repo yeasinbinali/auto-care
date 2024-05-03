@@ -1,6 +1,6 @@
 import React, { memo, useContext } from 'react';
 import { useForm } from "react-hook-form"
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
@@ -11,6 +11,8 @@ import { AuthContext } from '../../provider/AuthProvider';
 const Login = () => {
     const { register, handleSubmit } = useForm();
     const { loginUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const onSubmit = (data) => {
         const email = data.email;
@@ -19,7 +21,8 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                console.log(user);
+                navigate(location?.state ? location.state : '/');
             })
             .catch(error => {
                 const errorMessage = error.message;

@@ -1,11 +1,12 @@
 import React, { memo, useContext } from 'react';
 import { useForm } from "react-hook-form"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = memo(() => {
     const { register, handleSubmit } = useForm();
     const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         const name = data.name;
@@ -17,6 +18,7 @@ const Register = memo(() => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate('/');
             })
             .catch(error => {
                 const errorMessage = error.message;
