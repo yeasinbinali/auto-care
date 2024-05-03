@@ -5,17 +5,21 @@ import './Navbar.css';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Navbar = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const lists = [
-        <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/'>Home</NavLink></li>,
-        <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/about'>About</NavLink></li>,
-        <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/userProfile'>User</NavLink></li>,
-        <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/register'>Register</NavLink></li>,
-        <li id='navbar-item' style={{fontSize: '17px'}}><NavLink to='/login'>Login</NavLink></li>,
+        <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/'>Home</NavLink></li>,
+        <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/about'>About</NavLink></li>,
+        user ? <>
+            <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/userProfile'>User</NavLink></li>
+        </> : <>
+            <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/register'>Register</NavLink></li>,
+            <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/login'>Login</NavLink></li>
+        </>
+
     ]
     return (
-        <div style={{background: "whitesmoke"}}>
+        <div style={{ background: "whitesmoke" }}>
             <div className="navbar w-[90%] mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
