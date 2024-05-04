@@ -12,6 +12,7 @@ import Register from './components/Authetication/Register/Register.jsx';
 import Login from './components/Authetication/Login/Login.jsx';
 import AuthProvider from './components/provider/AuthProvider.jsx';
 import UserProfile from './components/UserProfile/UserProfile.jsx';
+import AllServices from './components/AllServices/AllServices.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About></About>
+      },
+      {
+        path: '/services',
+        element: <AllServices></AllServices>,
+        loader: () => fetch('http://localhost:5000/services')
       },
       {
         path: '/userProfile',
