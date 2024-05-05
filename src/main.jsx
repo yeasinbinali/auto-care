@@ -13,6 +13,7 @@ import Login from './components/Authetication/Login/Login.jsx';
 import AuthProvider from './components/provider/AuthProvider.jsx';
 import UserProfile from './components/UserProfile/UserProfile.jsx';
 import AllServices from './components/AllServices/AllServices.jsx';
+import ServiceDetails from './components/ServiceDetails/ServiceDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <About></About>
+      },
+      {
+        path: '/service/:id',
+        element: <ServiceDetails></ServiceDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
       },
       {
         path: '/services',

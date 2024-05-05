@@ -9,7 +9,7 @@ const Service = ({ service }) => {
             <img src={img} alt="service-img" />
             <div className='flex justify-between items-center p-5'>
                 <div>
-                    <h3 className='text-xl font-bold mb-2'>{title}</h3>
+                    <h3 className='text-2xl font-bold mb-2'>{title}</h3>
                     <p className='text-lg'>Price: <span className='font-bold'>{price}</span></p>
                 </div>
                 <div>
