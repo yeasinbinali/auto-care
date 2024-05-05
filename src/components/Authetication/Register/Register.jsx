@@ -5,7 +5,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = memo(() => {
     const { register, handleSubmit } = useForm();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, userUpdateProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
@@ -17,7 +17,11 @@ const Register = memo(() => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+
+                userUpdateProfile(name, imageURL)
+                    .then(() => { })
+                    .catch((error) => console.log(error.message))
+
                 navigate('/');
             })
             .catch(error => {
@@ -25,7 +29,7 @@ const Register = memo(() => {
                 console.log(errorMessage);
             })
     }
-    
+
     return (
         <div className="w-[90%] mx-auto flex flex-row items-center my-20">
             <div className="w-1/2">
