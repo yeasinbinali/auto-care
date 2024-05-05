@@ -27,7 +27,7 @@ const ServiceDetails = () => {
                 </div>
                 <div className='my-3 flex justify-between items-center'>
                     <button className='btn btn-outline' style={{ border: '1px solid #b51a09' }}><Link to='/services'>Go back</Link></button>
-                    <button className='btn bg-simple text-complex'>Add to Cart</button>
+                    <button className='btn bg-simple text-complex'><Link to={`/checkout/${_id}`}>Checkout</Link></button>
                 </div>
             </div>
         </div>
