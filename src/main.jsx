@@ -15,6 +15,7 @@ import UserProfile from './components/UserProfile/UserProfile.jsx';
 import AllServices from './components/AllServices/AllServices.jsx';
 import ServiceDetails from './components/ServiceDetails/ServiceDetails.jsx';
 import Checkout from './components/Checkout/Checkout.jsx';
+import BookingCarts from './components/BookingCarts/BookingCarts.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         path: '/checkout/:id',
         element: <Checkout></Checkout>,
         loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+      },
+      {
+        path: '/bookingCarts',
+        element: <BookingCarts></BookingCarts>
       },
       {
         path: '/services',

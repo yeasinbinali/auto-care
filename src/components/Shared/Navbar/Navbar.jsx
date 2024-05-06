@@ -12,7 +12,8 @@ const Navbar = () => {
         <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/services'>Services</NavLink></li>,
         <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/about'>About</NavLink></li>,
         user ? <>
-            <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/userProfile'>User</NavLink></li>
+            <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/bookingCarts'>Booking</NavLink></li>
+            <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/userProfile'>User</NavLink></li>            
         </> : <>
             <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/register'>Register</NavLink></li>
             <li id='navbar-item' style={{ fontSize: '17px' }}><NavLink to='/login'>Login</NavLink></li>
