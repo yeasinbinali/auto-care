@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../../../images/logo.png';
 import './Navbar.css';
 import { AuthContext } from '../../provider/AuthProvider';
+import { FaUser } from "react-icons/fa";
+
 
 const Navbar = () => {
     const { user } = useContext(AuthContext);
@@ -41,9 +43,8 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user && <p>{user?.email}</p>
+                        user ? <img className='w-12 h-12 rounded-full' src={user?.photoURL} alt="" /> : <FaUser className='w-12 h-12' />
                     }
-                    <a className="btn bg-simple text-complex">Appointment</a>
                 </div>
             </div>
         </div>

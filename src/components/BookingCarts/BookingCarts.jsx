@@ -6,16 +6,19 @@ const BookingCarts = () => {
     const [bookings, setBookings] = useState([]);
     const { user } = useContext(AuthContext);
 
+    const url = `http://localhost:5000/carts?email=${user?.email}`
     useEffect(() => {
-        const url = `http://localhost:5000/carts?email=${user?.email}`
-        axios.get(url)
+
+        axios.get(url, { withCredentials: true })
             .then(res => {
                 setBookings(res.data);
             })
             .catch(err => {
                 console.log(err.message);
             })
-    }, [])
+    }, [url])
+
+    console.log(bookings);
 
     return (
         <div className='mt-10 mb-20'>
@@ -32,7 +35,7 @@ const BookingCarts = () => {
                     </thead>
                     <tbody>
                         {
-                            bookings.map(booking => <tr>
+                            bookings.map(booking => <tr key={booking._id}>
                                 <th>{booking.title}</th>
                                 <td>{booking.price}</td>
                                 <td>{booking.time}</td>

@@ -8,7 +8,7 @@ import CountUp from 'react-countup';
 
 const About = () => {
     return (
-        <div className='flex justify-between items-center mb-20'>
+        <div className='flex justify-between items-center mt-16 mb-20'>
             <div className='w-1/2 relative'>
                 <img className='rounded-lg' src={aboutUpImage} alt="" />
                 <img className='absolute w-1/2 h-1/2 -right-10 -bottom-12 border-[whitesmoke] border-8 rounded-lg' src={aboutPartsImage} alt="" />
