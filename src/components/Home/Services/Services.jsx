@@ -13,7 +13,7 @@ const Services = () => {
                 setServices(data.data);
             })
             .catch(error => {
-                console.error(error);
+                console.error(error.message);
             })
     }, [])
 

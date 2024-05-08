@@ -6,7 +6,6 @@ import { FaGithub } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { Tooltip } from 'react-tooltip';
 import { AuthContext } from '../../provider/AuthProvider';
-import axios from 'axios';
 
 
 const Login = () => {
@@ -22,16 +21,7 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                const user = { email }
-
-                axios.post('http://localhost:5000/jwt', user, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        if (res.data.success) {
-                            navigate(location?.state ? location.state : '/');
-                        }
-                    })
+                navigate(location?.state ? location.state : '/');
             })
             .catch(error => {
                 const errorMessage = error.message;
